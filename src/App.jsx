@@ -84,6 +84,15 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/attendance"
+        element={
+          <ProtectedRoute>
+            <Attendance />
+          </ProtectedRoute>
+        }
+      />
+
 
       <Route
         path="/events"
