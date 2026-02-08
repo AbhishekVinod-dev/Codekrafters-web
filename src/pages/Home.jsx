@@ -24,7 +24,7 @@ export default function Home() {
           <Link
             to="/dashboard"
             className="px-6 py-3 rounded-xl font-bold text-base text-white transition hover:opacity-90"
-            style={{ background: "var(--primary)" }}
+            style={{ background: "var(--secondary)" }}
           >
             Go to Dashboard
           </Link>
@@ -36,6 +36,15 @@ export default function Home() {
           >
             Open Settings
           </Link>
+
+              <Link
+        to="/tasks"
+        className="px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition"
+        style={{ background: "var(--secondary)" }}
+      >
+        Task Distribution
+      </Link>
+
         </div>
       </div>
 
