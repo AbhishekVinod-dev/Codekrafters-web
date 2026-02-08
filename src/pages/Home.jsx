@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div
-      className="min-h-screen text-slate-900 flex flex-col items-center justify-center px-6"
-      style={{ background: "#F2F0D8" }}
+      className="min-h-screen flex flex-col items-center justify-center px-6 text-white"
+      style={{ background: "var(--bg)" }}
     >
       {/* Hero Section */}
       <div className="text-center max-w-2xl">
-        <h1 className="text-6xl font-black mb-4 text-black">
-          Welcome to <span className="text-yellow-500">CodeKrafters</span>
+        <h1 className="text-6xl font-black mb-4">
+          Welcome to <span style={{ color: "var(--primary)" }}>CodeKrafters</span>
         </h1>
 
-        <p className="text-xl font-semibold opacity-80 mb-8">
+        <p className="text-lg opacity-80 mb-8">
           A modern role‑based dashboard platform with global theming, secure
           authentication, and scalable architecture.
         </p>
@@ -22,15 +22,17 @@ export default function Home() {
         {/* Action Buttons */}
         <div className="flex gap-4 justify-center">
           <Link
-            to="/attendance"
-            className="px-6 py-3 rounded-xl font-black text-base bg-[var(--primary)] hover:opacity-90 transition"
+            to="/dashboard"
+            className="px-6 py-3 rounded-xl font-bold text-base text-white transition hover:opacity-90"
+            style={{ background: "var(--primary)" }}
           >
-            Go to Attendance
+            Go to Dashboard
           </Link>
 
           <Link
             to="/settings"
-            className="px-6 py-3 rounded-xl font-black text-base bg-[var(--secondary)] hover:opacity-90 transition"
+            className="px-6 py-3 rounded-xl font-bold text-base text-white transition hover:opacity-90"
+            style={{ background: "var(--secondary)" }}
           >
             Open Settings
           </Link>
@@ -67,7 +69,10 @@ export default function Home() {
 
 function FeatureCard({ title, description }) {
   return (
-    <div className="bg-[var(--card)] rounded-2xl p-6 shadow-lg hover:scale-105 transition">
+    <div
+      className="rounded-2xl p-6 shadow-lg hover:scale-105 transition text-white"
+      style={{ background: "var(--card)" }}
+    >
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="opacity-80 text-sm">{description}</p>
     </div>
