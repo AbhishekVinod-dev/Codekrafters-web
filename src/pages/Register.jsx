@@ -49,7 +49,7 @@ export default function Register() {
         <div className="text-center space-y-2">
           <h1 className="text-5xl font-black text-black">Create Account</h1>
           <p className="text-base font-bold text-black">
-            Join <span className="text-yellow-500 font-black">CodeKrafters</span>
+            Join <span className="text-yellow-500 font-black">ClubTrack</span>
           </p>
         </div>
 

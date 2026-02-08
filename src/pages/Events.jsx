@@ -19,7 +19,7 @@ export default function Events() {
         </div>
 
         <p className="text-lg text-gray-600">
-          Soon you'll be able to register for CodeKrafters events and networking opportunities.
+          Soon you'll be able to register for ClubTrack events and networking opportunities.
         </p>
       </div>
     </div>

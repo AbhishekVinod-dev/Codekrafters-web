@@ -6,7 +6,7 @@ const palettes = [
 { name: "Ocean", colors: ["#0f172a", "#0ea5e9", "#38bdf8"] },
 { name: "Forest", colors: ["#14532d", "#22c55e", "#4ade80"] },
 { name: "Sunset", colors: ["#7c2d12", "#f97316", "#fb923c"] },
-{ name: "CodeKrafters", colors: ["#feefb6","#f9b000", "#0d0d0d"] },
+{ name: "ClubTrack", colors: ["#feefb6","#f9b000", "#0d0d0d"] },
 ];
 
 
