@@ -51,7 +51,7 @@ export default function Navbar() {
       <div className="p-6 border-b flex items-center justify-between gap-2 border-white/10">
         {shouldExpand && (
           <h1 className="text-3xl font-black tracking-wide">
-            <span style={{ color: "var(--primary)" }}>Code</span>
+            <span style={{ color: "var(--bg)" }}>Code</span>
             <span className="text-white">Krafters</span>
           </h1>
         )}
