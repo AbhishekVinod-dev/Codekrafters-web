@@ -9,12 +9,14 @@ import { SidebarProvider } from "./context/SidebarContext"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SidebarProvider>
-      <ThemeProvider>  
+    
+      <ThemeProvider> 
+      <SidebarProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
+      </SidebarProvider> 
       </ThemeProvider>
-    </SidebarProvider>  
+     
   </React.StrictMode>
 )
