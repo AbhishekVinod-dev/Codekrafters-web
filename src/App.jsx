@@ -1,17 +1,9 @@
 import React from "react";
-import Events from "./events";
+import Events from "./Events";
 
 function App() {
-  return (
-    <div>
-      <header className="header">
-        <h1> Events</h1>
-        <p>Explore our upcoming and past events</p>
-      </header>
-
-      <Events />
-    </div>
-  );
+  return <Events />;
 }
 
 export default App;
+m

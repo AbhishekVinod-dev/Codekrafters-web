@@ -40,16 +40,16 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "var(--bg)" }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "#F2F0D8" }}>
       <form
         onSubmit={handleRegister}
-        className="w-full max-w-lg bg-[var(--card)] backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl space-y-6 text-white"
+        className="w-full max-w-lg bg-white border-2 border-black/10 rounded-3xl p-10 shadow-lg space-y-6 text-black"
       >
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-extrabold">Create Account</h1>
-          <p className="text-sm opacity-70">
-            Join <span className="text-[var(--primary)] font-semibold">CodeKrafters</span>
+          <h1 className="text-5xl font-black text-black">Create Account</h1>
+          <p className="text-base font-bold text-black">
+            Join <span className="text-yellow-500 font-black">CodeKrafters</span>
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export default function Register() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-xl bg-black/30 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition"
+            className="w-full p-3 rounded-xl bg-white border-2 border-black/10 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition text-black placeholder-gray-500"
           />
 
           <input
@@ -70,7 +70,7 @@ export default function Register() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-xl bg-black/30 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition"
+            className="w-full p-3 rounded-xl bg-white border-2 border-black/10 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition text-black placeholder-gray-500"
           />
 
           {/* Role Selector */}
@@ -95,17 +95,17 @@ export default function Register() {
         {/* Submit */}
         <button
           disabled={loading}
-          className="w-full py-3 rounded-xl font-semibold text-white transition active:scale-95"
-          style={{ background: "var(--primary)", opacity: loading ? 0.7 : 1 }}
+          className="w-full py-3 rounded-xl font-semibold text-black transition active:scale-95 bg-yellow-400 hover:bg-yellow-500"
+          style={{ opacity: loading ? 0.7 : 1 }}
         >
           {loading ? "Creating account..." : "Create Account"}
         </button>
 
         {/* Login Link */}
-        <p className="text-center text-sm opacity-80">
+        <p className="text-center text-sm text-black">
           Already have an account?{" "}
           <span
-            className="text-[var(--primary)] font-semibold cursor-pointer hover:underline"
+            className="text-yellow-500 font-semibold cursor-pointer hover:underline"
             onClick={() => navigate("/login")}
           >
             Sign in
