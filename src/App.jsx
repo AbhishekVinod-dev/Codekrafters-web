@@ -1,30 +1,8 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Attendance from "./pages/Attendance";
-import Events from "./pages/Events";
-import TaskDistributor from "./pages/TaskDistributor";
-import ProtectedRoute from "./components/ProtectedRoute";
-import PublicRoute from "./components/PublicRoute";
-import Settings from "./pages/Settings";
-import { useSidebar } from "./context/SidebarContext";
-import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./lib/firebase";
+import React from "react";
+import Events from "./Events";
 
-/* ---------- Layout that includes Navbar + theme ---------- */
-function AppLayout({ children }) {
-  const { isOpen } = useSidebar();
-  return (
-    <div
-      className={`min-h-screen text-slate-900 transition-all duration-300 ${isOpen ? 'ml-64' : 'ml-20'}`}
-      style={{ background: "#F2F0D8" }}
-    >
-      {children}
-    </div>
-  );
+function App() {
+  return <Events />;
 }
 
 export default function App() {
@@ -130,3 +108,5 @@ export default function App() {
     </>
   );
 }
+export default App;
+m
