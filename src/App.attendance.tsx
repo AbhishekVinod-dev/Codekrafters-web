@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSidebar } from "../context/SidebarContext";
+﻿import React, { useState, useEffect } from "react";
+import { Domain, Member, AttendanceRecord, AppState } from "./types";
 
-import Sidebar from "../components/Sidebar";
-import Dashboard from "../components/Dashboard";
-import MembersView from "../components/MembersView";
-import AttendanceView from "../components/AttendanceView";
-import AnalyticsView from "../components/AnalyticsView";
-import Toast from "../components/Toast";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
+import MembersView from "./components/MembersView";
+import AttendanceView from "./components/AttendanceView";
+import AnalyticsView from "./components/AnalyticsView";
+import Toast, { ToastType } from "./components/Toast";
 
-const STORAGE_KEY = "codekrafters_attendance_v1";
+const STORAGE_KEY = "codekrafters_v1";
 
-const INITIAL_STATE = {
+const INITIAL_STATE: AppState = {
   members: [],
   attendance: [],
 };
 
-export default function AttendanceManagement() {
-  const { isOpen } = useSidebar();
-
-  /* ---------- Load persisted state ---------- */
-  const [state, setState] = useState(() => {
+const App: React.FC = () => {
+  const [state, setState] = useState<AppState>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       return saved ? JSON.parse(saved) : INITIAL_STATE;
@@ -29,8 +26,14 @@ export default function AttendanceManagement() {
     }
   });
 
-  const [activeTab, setActiveTab] = useState("dashboard");
-  const [toast, setToast] = useState(null);
+  const [activeTab, setActiveTab] = useState<
+    "dashboard" | "members" | "attendance" | "analytics"
+  >("dashboard");
+
+  const [toast, setToast] = useState<{
+    message: string;
+    type: ToastType;
+  } | null>(null);
 
   /* ---------- Persist state ---------- */
   useEffect(() => {
@@ -38,13 +41,13 @@ export default function AttendanceManagement() {
   }, [state]);
 
   /* ---------- Toast helper ---------- */
-  const showToast = (message, type = "success") => {
+  const showToast = (message: string, type: ToastType = "success") => {
     setToast({ message, type });
   };
 
   /* ---------- Member actions ---------- */
-  const addMember = (name, domain) => {
-    const newMember = {
+  const addMember = (name: string, domain: Domain) => {
+    const newMember: Member = {
       id: `MK-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
       name,
       domain,
@@ -59,15 +62,15 @@ export default function AttendanceManagement() {
     showToast(`Krafter ${name} onboarded successfully!`);
   };
 
-  const deleteMember = (id) => {
+  const deleteMember = (id: string) => {
     const memberToDelete = state.members.find((m) => m.id === id);
     if (!memberToDelete) return;
 
-    if (
-      window.confirm(
-        `Remove ${memberToDelete.name}? All attendance data will be deleted.`
-      )
-    ) {
+    const confirmed = window.confirm(
+      `Remove ${memberToDelete.name}? All attendance data will be deleted.`
+    );
+
+    if (confirmed) {
       setState((prev) => ({
         ...prev,
         members: prev.members.filter((m) => m.id !== id),
@@ -79,7 +82,7 @@ export default function AttendanceManagement() {
   };
 
   /* ---------- Attendance ---------- */
-  const markAttendance = (memberId, date, present) => {
+  const markAttendance = (memberId: string, date: string, present: boolean) => {
     const member = state.members.find((m) => m.id === memberId);
     if (!member) return;
 
@@ -97,7 +100,7 @@ export default function AttendanceManagement() {
     showToast(`${member.name} marked as ${present ? "PRESENT" : "ABSENT"}`);
   };
 
-  /* ---------- Reset ---------- */
+  /* ---------- Reset system ---------- */
   const resetSystem = () => {
     if (window.confirm("CRITICAL: Wipe all club data? This is irreversible.")) {
       setState(INITIAL_STATE);
@@ -105,7 +108,7 @@ export default function AttendanceManagement() {
     }
   };
 
-  /* ---------- Content renderer ---------- */
+  /* ---------- Page renderer ---------- */
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
@@ -146,12 +149,10 @@ export default function AttendanceManagement() {
   /* ---------- UI ---------- */
   return (
     <div
-      className={`min-h-screen overflow-x-hidden transition-all duration-300 ${
-        isOpen ? "ml-64" : "ml-20"
-      }`}
+      className="min-h-screen overflow-x-hidden"
       style={{
-        background: "var(--bg)",        // 🎨 global theme background
-        color: "var(--text, #ffffff)",  // 🎨 global text color fallback
+        background: "var(--bg)",       // 🎨 global background from theme
+        color: "var(--text, #ffffff)", // optional text variable fallback
       }}
     >
       {/* Sidebar */}
@@ -172,4 +173,6 @@ export default function AttendanceManagement() {
       </main>
     </div>
   );
-}
+};
+
+export default App;
