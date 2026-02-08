@@ -1,118 +1,105 @@
 import { useTheme } from "../context/ThemeContext";
-
-
-const palettes = [
-{ name: "Midnight", colors: ["#1e293b", "#3b82f6", "#8b5cf6"] },
-{ name: "Ocean", colors: ["#0f172a", "#0ea5e9", "#38bdf8"] },
-{ name: "Forest", colors: ["#14532d", "#22c55e", "#4ade80"] },
-{ name: "Sunset", colors: ["#7c2d12", "#f97316", "#fb923c"] },
-{ name: "CodeKrafters", colors: ["#feefb6","#f9b000", "#0d0d0d"] },
-];
-
+import { signOut } from "firebase/auth";
+import { auth } from "../lib/firebase";
+import { useNavigate } from "react-router-dom";
+import { Moon, Sun, LogOut } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Settings() {
-const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
 
+  const darkTheme = {
+    background: "#1a1a1a",
+    primary: "#3b82f6",
+    secondary: "#60a5fa",
+    cardBg: "rgba(255,255,255,0.1)",
+  };
 
-const applyPalette = (palette) => {
-setTheme({
-background: palette.colors[0],
-primary: palette.colors[1],
-secondary: palette.colors[2],
-cardBg: theme.cardBg,
-});
-};
+  const lightTheme = {
+    background: "#f5f5f5",
+    primary: "#f97316",
+    secondary: "#fb923c",
+    cardBg: "rgba(0,0,0,0.05)",
+  };
 
+  useEffect(() => {
+    setTheme(isDarkMode ? darkTheme : lightTheme);
+    localStorage.setItem("darkMode", isDarkMode);
+  }, [isDarkMode, setTheme]);
 
-return (
-<div className="min-h-screen text-white" style={{ background: "var(--bg)" }}>
-<div className="max-w-6xl mx-auto p-6 grid lg:grid-cols-3 gap-6">
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-{/* LEFT */}
-<div className="lg:col-span-2 space-y-6">
-<h1 className="text-3xl font-bold">Theme Settings</h1>
+  return (
+    <div
+      className="min-h-screen text-slate-900 flex items-center justify-center p-4"
+      style={{ background: "#F2F0D8" }}
+    >
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <h1 className="text-5xl font-black mb-2 text-black">Settings</h1>
+          <p className="text-lg font-bold text-gray-700">Customize your experience</p>
+        </div>
 
+        {/* Dark Mode Toggle */}
+        <div
+          className="bg-white p-8 rounded-2xl space-y-4 border-2 border-black/10 shadow-md"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {isDarkMode ? (
+                <Moon size={24} className="text-blue-600" />
+              ) : (
+                <Sun size={24} className="text-yellow-500" />
+              )}
+              <div>
+                <h2 className="font-semibold text-lg text-black">Dark Mode</h2>
+                <p className="text-sm text-gray-600">
+                  {isDarkMode ? "Enabled" : "Disabled"}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={toggleDarkMode}
+              className={`relative w-14 h-8 rounded-full transition-colors ${
+                isDarkMode ? "bg-blue-600" : "bg-yellow-400"
+              }`}
+            >
+              <div
+                className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform ${
+                  isDarkMode ? "translate-x-7" : "translate-x-1"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
 
-<div className="bg-[var(--card)] p-6 rounded-2xl space-y-4">
-<h2 className="font-semibold">Color Palettes</h2>
-
-
-<div className="grid md:grid-cols-2 gap-4">
-{palettes.map((p) => (
-<button
-key={p.name}
-onClick={() => applyPalette(p)}
-className="border border-white/20 rounded-xl p-4 hover:scale-105 transition"
->
-<div className="flex gap-2 mb-2">
-{p.colors.map((c) => (
-<div key={c} className="w-8 h-8 rounded" style={{ background: c }} />
-))}
-</div>
-<p className="text-sm">{p.name}</p>
-</button>
-))}
-</div>
-
-
-{/* Custom pickers */}
-<ColorInput
-label="Background"
-value={theme.background}
-onChange={(v) => setTheme({ ...theme, background: v })}
-/>
-
-
-<ColorInput
-label="Primary"
-value={theme.primary}
-onChange={(v) => setTheme({ ...theme, primary: v })}
-/>
-<ColorInput
-label="Secondary"
-value={theme.secondary}
-onChange={(v) => setTheme({ ...theme, secondary: v })}
-/>
-</div>
-</div>
-
-
-{/* RIGHT */}
-<div className="space-y-6">
-<div className="bg-[var(--card)] p-6 rounded-2xl space-y-2">
-<h2 className="font-semibold">Preview</h2>
-<div className="h-12 rounded" style={{ background: "var(--bg)" }} />
-<div className="h-12 rounded" style={{ background: "var(--primary)" }} />
-<div className="h-12 rounded" style={{ background: "var(--secondary)" }} />
-<div className="h-12 rounded" style={{ background: "var(--card)" }} />
-
-</div>
-
-
-<button
-onClick={() => localStorage.removeItem("app-theme")}
-className="w-full py-2 bg-red-600 rounded-lg"
->
-Reset Theme
-</button>
-</div>
-</div>
-</div>
-);
-}
-
-function ColorInput({ label, value, onChange }) {
-return (
-<div className="space-y-1">
-<p className="text-sm">{label}</p>
-<input
-type="color"
-value={value}
-onChange={(e) => onChange(e.target.value)}
-className="w-full h-10 rounded"
-/>
-</div>
-);
+        {/* Logout Button */}
+        <div>
+          <button
+            onClick={logout}
+            className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-red-600 hover:bg-red-700 transition-colors font-semibold text-lg text-white"
+          >
+            <LogOut size={24} />
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 

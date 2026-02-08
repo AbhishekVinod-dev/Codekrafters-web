@@ -5,12 +5,6 @@ import "./App.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <SidebarProvider>
-      <ThemeProvider>  
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </SidebarProvider>  
+    <App />
   </React.StrictMode>
 );

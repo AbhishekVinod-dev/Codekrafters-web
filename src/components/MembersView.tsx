@@ -28,71 +28,33 @@ const MembersView: React.FC<MembersViewProps> = ({ members, onAdd, onDelete }) =
             <p className="text-slate-500 font-medium">Currently managing <span className="text-black font-bold">{members.length}</span> brilliant minds</p>
           </div>
 
-          <form
-  onSubmit={handleSubmit}
-  className="flex flex-col sm:flex-row gap-3 p-3 rounded-[2.5rem] border shadow-sm"
-  style={{
-    background: "var(--card)",
-    borderColor: "var(--border)"
-  }}
->
-  {/* NAME INPUT */}
-  <input
-    type="text"
-    placeholder="Krafter Full Name"
-    value={name}
-    onChange={(e) => setName(e.target.value)}
-    className="px-6 py-4 rounded-3xl text-sm font-bold focus:outline-none transition-all min-w-[240px]"
-    style={{
-      background: "var(--bg)",
-      color: "var(--text)",          // ⭐ ensures visible typed text
-      border: "1px solid var(--border)"
-    }}
-  />
-
-  {/* DOMAIN SELECT */}
-  <div className="relative group">
-    <select
-      value={domain}
-      onChange={(e) => setDomain(e.target.value as Domain)}
-      className="appearance-none px-6 py-4 pr-12 rounded-3xl text-sm font-bold w-full cursor-pointer focus:outline-none transition-all"
-      style={{
-        background: "var(--bg)",
-        color: "var(--text)",        // ⭐ visible selected text
-        border: "1px solid var(--border)"
-      }}
-    >
-      {Object.values(Domain).map((d) => (
-        <option key={d} value={d}>
-          {d}
-        </option>
-      ))}
-    </select>
-
-    {/* dropdown arrow */}
-    <div
-      className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
-      style={{ color: "var(--text)", opacity: 0.6 }}
-    >
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-        <path d="m6 9 6 6 6-6" />
-      </svg>
-    </div>
-  </div>
-
-  {/* BUTTON */}
-  <button
-    type="submit"
-    className="px-10 py-4 rounded-3xl text-sm font-black transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2"
-    style={{
-      background: "var(--primary)",
-      color: "#fff"
-    }}
-  >
-    <UserPlus size={18} />
-    Onboard
-  </button>
-</form>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 bg-white p-3 rounded-[2.5rem] border border-slate-200 shadow-sm">
+            <input
+              type="text"
+              placeholder="Krafter Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="bg-slate-50 border border-slate-100 px-6 py-4 rounded-3xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all min-w-[240px]"
+            />
+            <div className="relative group">
+              <select
+                value={domain}
+                onChange={(e) => setDomain(e.target.value as Domain)}
+                className="appearance-none bg-slate-50 border border-slate-100 px-6 py-4 pr-12 rounded-3xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all w-full cursor-pointer"
+              >
+                {Object.values(Domain).map(d => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button type="submit" className="bg-black text-white hover:bg-slate-800 px-10 py-4 rounded-3xl text-sm font-black transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2">
+              <UserPlus size={18} />
+              Onboard
+            </button>
+          </form>
         </div>
       </header>
 
