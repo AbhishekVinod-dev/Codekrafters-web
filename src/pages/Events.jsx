@@ -1,27 +1,87 @@
-export default function Events() {
+import React from "react";
+
+import event2 from "./assets/photos/event2.jpg";
+import gamenight from "./assets/photos/event3.jpg";
+import event4 from "./assets/photos/event4.jpg";
+import event5 from "./assets/photos/event5.jpg";
+import event6 from "./assets/photos/event6.jpg";
+import aiworkshop from "./assets/photos/event1.jpg";
+
+
+import EventCard from "./EventCard";
+
+import "./Events.css";
+
+
+
+function Events() {
+  const upcomingEvents = [
+    {
+      title: "Tech Fest 2026",
+      date: "Feb 20, 2026",
+      about: "Tech Fest 2026 brings together students, developers, and innovators for coding competitions, tech talks, and project showcases.",
+      photo: event6, 
+    },
+    {
+      title: "Hackathon",
+      date: "March 2, 2026",
+      about: "A 24-hour coding challenge where teams build innovative projects, solve real-world problems, and compete for exciting prizes.",
+      photo: event2,
+    },
+    {
+      title: "AI Workshop",
+      date: "March 18, 2026",
+      about: "Hands-on workshop covering Machine Learning basics, AI tools, and real-world project implementation using Python.",
+      photo: aiworkshop,
+    }
+  ];
+
+  const pastEvents = [
+    {
+      title: "Web Dev Bootcamp",
+      date: "Jan 2026",
+      about: "Intensive training on modern web technologies including React, Tailwind CSS, and backend integration.",
+      photo: event4,
+    },
+    {
+      title: "Club Meetup",
+      date: "Dec 2025",
+      about: "Networking session for members to share ideas, collaborate on projects, and discuss upcoming tech activities.",
+      photo: event5,
+    },
+    {
+      title: "Gaming Night",
+      date: "Nov 2025",
+      about: "Fun gaming event with multiplayer competitions, team battles, and interactive entertainment for students.",
+      photo: gamenight,
+    }
+  ];
+
   return (
-    <div style={{ background: "#F2F0D8" }} className="min-h-screen w-full flex items-center justify-center px-4">
-      <div className="max-w-2xl text-center">
-        <h1 className="text-6xl font-black mb-6 text-black">
-          <span className="text-yellow-500">Events</span>
-        </h1>
+    <div className="events-page">
+      {/* YELLOW HEADER BANNER */}
+      <header className="events-header-banner">
+        <h1>Events</h1>
+        <p>Explore our upcoming and past events</p>
+      </header>
 
-        <p className="text-xl font-semibold text-gray-700 mb-4">
-          Our calendar of brilliant gatherings is still being crafted.
-        </p>
-
-        <p className="text-lg text-gray-600 mb-12">
-          Amazing collaborative events and workshops are being prepared behind the scenes.
-        </p>
-
-        <div className="inline-block px-8 py-4 bg-black text-white rounded-full font-black text-base mb-8">
-          Events Coming Soon
+      <div className="events-container">
+        
+        <div className="events-grid">
+          {upcomingEvents.map((event, index) => (
+            <EventCard key={index} {...event} />
+          ))}
         </div>
 
-        <p className="text-lg text-gray-600">
-          Soon you'll be able to register for CodeKrafters events and networking opportunities.
-        </p>
+        <h1 className="section-title">Past Events</h1>
+        <div className="events-grid">
+          {pastEvents.map((event, index) => (
+            <EventCard key={index} {...event} />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
+
+export default Events;

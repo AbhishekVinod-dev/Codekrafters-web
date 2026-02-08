@@ -22,7 +22,7 @@ export default function Home() {
         {/* Action Buttons */}
         <div className="flex gap-4 justify-center">
           <Link
-            to="/dashboard"
+            to="/attendance"
             className="px-6 py-3 rounded-xl font-bold text-base text-white transition hover:opacity-90"
             style={{ background: "var(--secondary)" }}
           >
