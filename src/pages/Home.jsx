@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div
-      className="min-h-screen text-white flex flex-col items-center justify-center px-6"
-      style={{ background: "var(--bg)" }}
+      className="min-h-screen text-slate-900 flex flex-col items-center justify-center px-6"
+      style={{ background: "#F2F0D8" }}
     >
       {/* Hero Section */}
       <div className="text-center max-w-2xl">
-        <h1 className="text-5xl font-extrabold mb-4">
-          Welcome to <span className="text-[var(--primary)]">CodeKrafters</span>
+        <h1 className="text-6xl font-black mb-4 text-black">
+          Welcome to <span className="text-yellow-500">CodeKrafters</span>
         </h1>
 
-        <p className="text-lg opacity-80 mb-8">
+        <p className="text-xl font-semibold opacity-80 mb-8">
           A modern role‑based dashboard platform with global theming, secure
           authentication, and scalable architecture.
         </p>
@@ -22,15 +22,15 @@ export default function Home() {
         {/* Action Buttons */}
         <div className="flex gap-4 justify-center">
           <Link
-            to="/dashboard"
-            className="px-6 py-3 rounded-xl font-semibold bg-[var(--primary)] hover:opacity-90 transition"
+            to="/attendance"
+            className="px-6 py-3 rounded-xl font-black text-base bg-[var(--primary)] hover:opacity-90 transition"
           >
-            Go to Dashboard
+            Go to Attendance
           </Link>
 
           <Link
             to="/settings"
-            className="px-6 py-3 rounded-xl font-semibold bg-[var(--secondary)] hover:opacity-90 transition"
+            className="px-6 py-3 rounded-xl font-black text-base bg-[var(--secondary)] hover:opacity-90 transition"
           >
             Open Settings
           </Link>
