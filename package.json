@@ -1,12 +1,15 @@
 {
   "name": "react-firebase-production",
+  "homepage": "https://abhishekvinod-dev.github.io/Codekrafters-web/",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "firebase": "^10.12.0",
