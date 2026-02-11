@@ -1,6 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
 
-export default defineConfig({ plugins: [react()], 
-    base: '/Codekrafters-web/',
- });
+// export default defineConfig({ plugins: [react()], 
+//     base: '/Codekrafters-web/',
+//  });
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  base: "/Codekrafters-web/",   // ⚠️ must match repo name EXACTLY
+});
