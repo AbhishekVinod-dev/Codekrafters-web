@@ -1,4 +1,4 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({ plugins: [react()], base: '/CodeKrafters-web/' })
+export default defineConfig({ plugins: [react()], base: '/Codekrafters-web/' })
