@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./lib/firebase";
 
-/* ---------- Layout that includes Navbar + theme ---------- */
+
 function AppLayout({ children }) {
   const { isOpen } = useSidebar();
   return (
