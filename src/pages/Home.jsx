@@ -251,7 +251,7 @@ export default function Home() {
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">Ready to get started?</h2>
               <p className="text-white/80 mb-8 max-w-md mx-auto">
-                Join thousands of clubs already using ClubTrack to manage their members efficiently.
+                Making club coordination easy for every member and leader.
               </p>
               <Link
                 to="/register"
