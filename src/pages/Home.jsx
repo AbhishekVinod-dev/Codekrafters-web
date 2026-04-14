@@ -29,11 +29,11 @@ export default function Home() {
           </Link>
 
          <Link
-    to="/tasks"
-    className="px-6 py-3 rounded-xl font-semibold bg-[var(--accent)] hover:opacity-90 transition"
-  >
-     Task Distribution
-  </Link>
+          to="/tasks"
+           className="px-6 py-3 rounded-xl font-semibold bg-[var(--accent)] hover:opacity-90 transition"
+            >
+          Task Distribution
+          </Link>
 
           <Link
             to="/settings"
