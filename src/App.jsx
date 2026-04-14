@@ -3,9 +3,11 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 import Attendance from "./pages/Attendance";
 import Events from "./pages/Events";
 import TaskDistributor from "./pages/TaskDistributor";
+import TaskDistributorPage from "./pages/TaskDistributorPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import Settings from "./pages/Settings";
@@ -64,7 +66,7 @@ export default function App() {
         }
       />
 
-      {/* ---------- PROTECTED ROUTES WITH NAVBAR ---------- */}
+      {/* ---------- PROTECTED ROUTES ---------- */}
       <Route
         path="/"
         element={
@@ -101,7 +103,18 @@ export default function App() {
         element={
           <ProtectedRoute>
             <AppLayout>
-              <TaskDistributor />
+              <TaskDistributorPage />
+            </AppLayout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <AppLayout>
+              <Dashboard />
             </AppLayout>
           </ProtectedRoute>
         }
