@@ -47,20 +47,17 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "var(--bg)" }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "#F2F0D8" }}>
       {/* Glass Card */}
       <form
         onSubmit={handleLogin}
-        className="w-full max-w-lg bg-[var(--card)] backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl space-y-6"
+        className="w-full max-w-lg bg-white border-2 border-black/10 rounded-3xl p-10 shadow-lg space-y-6"
       >
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white">
+          <h1 className="text-5xl font-black tracking-tight text-black">
             Welcome Back 👋
           </h1>
-          <p className="text-sm opacity-70">
-            Sign in to continue to <span className="text-[var(--primary)] font-semibold">CodeKrafters</span>
-          </p>
         </div>
 
         {/* Inputs */}
@@ -71,7 +68,7 @@ export default function Login() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-           className="w-full p-3 rounded-xl bg-black/30 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition text-white placeholder-gray-400"
+           className="w-full p-3 rounded-xl bg-white border-2 border-black/10 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition text-black placeholder-gray-500"
           />
 
           <input
@@ -80,7 +77,7 @@ export default function Login() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-xl bg-black/30 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition"
+            className="w-full p-3 rounded-xl bg-white border-2 border-black/10 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition text-black placeholder-gray-500"
           />
         </div>
 
@@ -94,8 +91,8 @@ export default function Login() {
         {/* Login Button */}
         <button
           disabled={loading}
-          className="w-full py-3 rounded-xl font-semibold text-white transition active:scale-95"
-          style={{ background: "var(--primary)", opacity: loading ? 0.7 : 1 }}
+          className="w-full py-3 rounded-xl font-semibold text-black transition active:scale-95 bg-yellow-400 hover:bg-yellow-500"
+          style={{ opacity: loading ? 0.7 : 1 }}
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
@@ -108,11 +105,11 @@ export default function Login() {
         </div>
 
         {/* Register Link */}
-        <p className="text-center text-sm opacity-80">
-          Don’t have an account?{" "}
+        <p className="text-center text-sm text-black">
+          Don't have an account?{" "}
           <span
             onClick={() => navigate("/register")}
-            className="text-[var(--primary)] font-semibold cursor-pointer hover:underline"
+            className="text-yellow-500 font-semibold cursor-pointer hover:underline"
           >
             Create one
           </span>

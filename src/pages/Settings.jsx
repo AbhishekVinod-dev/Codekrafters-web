@@ -85,6 +85,7 @@ onChange={(v) => setTheme({ ...theme, secondary: v })}
 <div className="h-12 rounded" style={{ background: "var(--bg)" }} />
 <div className="h-12 rounded" style={{ background: "var(--primary)" }} />
 <div className="h-12 rounded" style={{ background: "var(--secondary)" }} />
+<div className="h-12 rounded" style={{ background: "var(--card)" }} />
 
 </div>
 
